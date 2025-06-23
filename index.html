@@ -1,32 +1,31 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sanyam Mahajan | Training Blog</title>
-  <link rel="stylesheet" href="assets/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
   <header class="navbar">
-    <div class="container">
-      <div class="nav-header">
-        <h1 class="logo">Sanyam Mahajan</h1>
-        
-      </div>
-      <nav>
-        <ul class="nav-links" id="navLinks">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#perspective">Perspective</a></li>
-          <li><a href="#blogs">Blogs</a></li>
-          <li><button id="themeToggle" aria-label="Toggle theme">🌓</button></li>
-        </ul>
-      </nav>
+  <div class="container">
+    <div class="nav-header">
+      <h1 class="logo">Sanyam Mahajan</h1>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
     </div>
-  </header>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#perspective">Perspective</a></li>
+        <li><a href="#blogs">Blogs</a></li>
+        <li><button id="themeToggle" aria-label="Toggle theme">🌓</button></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
 
   <section class="hero fade-in">
     <div class="container">
@@ -42,8 +41,7 @@
       <p>I've developed platforms like <strong>VisionaryHub</strong> — a startup guidance tool integrating AI, and worked on disaster management dashboards, recipe generators, and real-time weather apps. I love translating ideas into functional tools using React, Node.js, MongoDB, and Tailwind CSS.</p>
       <p>Beyond coding, I’m a part of student-led clubs like <strong>Causmic Club</strong>, <strong>Ambit Youth Parliament</strong>, and the <strong>Training & Placement Cell</strong>. These roles have refined my leadership and collaboration skills.</p>
       <p>I thrive in dynamic environments where innovation meets real-world application, and I’m always eager to explore new technologies that push the boundaries of creativity and efficiency.</p>
-      <p>
-        <strong>Connect with me:</strong><br>
+      <p><strong>Connect with me:</strong><br>
         🔗 <a href="https://github.com/SanyamMahajan" target="_blank">GitHub</a> &nbsp;|&nbsp;
         🔗 <a href="https://www.linkedin.com/in/sanyammahajan07/" target="_blank">LinkedIn</a>
       </p>
@@ -96,24 +94,5 @@
   </footer>
 
   <script src="assets/script.js"></script>
-  <script>
-    // Toggle mobile navbar
-    document.getElementById('navToggle').addEventListener('click', () => {
-      document.getElementById('navLinks').classList.toggle('open');
-    });
-
-    // Fade-in animations
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    faders.forEach(fader => observer.observe(fader));
-  </script>
 </body>
 </html>

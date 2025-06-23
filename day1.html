@@ -12,7 +12,7 @@
     <div class="container">
       <div class="nav-header">
         <h1 class="logo">Sanyam Mahajan</h1>
-        
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
       </div>
       <nav>
         <ul class="nav-links" id="navLinks">
@@ -63,6 +63,7 @@
         <li>✅ Revised and practiced key HTML & CSS fundamentals.</li>
         <li>✅ Completed GitHub CLI revision and hands-on practice.</li>
         <li>✅ Designed and published the training blog layout.</li>
+        <li>✅ Made the blog fully responsive with mobile-friendly navigation.</li>
         <li>✅ Understood expectations and training workflow.</li>
       </ul>
       <p>Feeling confident and excited to continue progressing each day!</p>
@@ -74,10 +75,11 @@
       <h2>Time Spent</h2>
       <p>Tracked using <a href="https://clockify.me/" target="_blank">Clockify</a>:</p>
       <ul>
-        <li><strong>Total Time:</strong> 6 hours 7 minutes</li>
+        <li><strong>Total Time:</strong> 7 hours 11 minutes</li>
         <li><strong>GitHub CLI Practice:</strong> 1 hour 39 minutes</li>
         <li><strong>Blog Setup:</strong> 2 hours 47 minutes</li>
         <li><strong>HTML & CSS Revision:</strong> 1 hour 40 minutes</li>
+        <li><strong>Enhancing Responsiveness:</strong> 1 hour 4 minutes</li>
       </ul>
     </div>
   </section>
@@ -96,24 +98,6 @@
   </footer>
 
   <script src="assets/script.js"></script>
-  <script>
-    // Toggle mobile navbar
-    document.getElementById('navToggle').addEventListener('click', () => {
-      document.getElementById('navLinks').classList.toggle('open');
-    });
-
-    // Fade-in animations
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    faders.forEach(fader => observer.observe(fader));
-  </script>
 </body>
 </html>
+

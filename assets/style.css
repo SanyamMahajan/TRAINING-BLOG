@@ -1,5 +1,3 @@
-/* style.css */
-
 :root {
   --bg-color: #fefefe;
   --text-color: #1a1a1a;
@@ -21,6 +19,7 @@ body {
   color: var(--text-color);
   transition: background-color var(--transition), color var(--transition);
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 .container {
@@ -29,56 +28,84 @@ body {
   margin: 0 auto;
 }
 
+/* Navbar */
 .navbar {
   background-color: var(--nav-bg);
-  color: var(--nav-text);
   padding: 1rem 0;
   border-bottom: 1px solid #e5e7eb;
+  position: relative;
+  z-index: 1000;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-  margin: 0;
   font-size: 1.8rem;
   font-weight: bold;
   color: var(--primary);
+  margin: 0;
   opacity: 0;
   animation: fadeIn 1s ease forwards;
+}
+
+.nav-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
   padding: 0;
   margin: 0;
   justify-content: flex-end;
+  align-items: center;
 }
 
-.nav-links a, #themeToggle {
-  color: var(--nav-text);
+.nav-links a,
+#themeToggle {
   text-decoration: none;
+  color: var(--nav-text);
   font-weight: 500;
+  font-size: 1rem;
   background: none;
   border: none;
+  padding: 0.5rem 1rem;
   cursor: pointer;
-  font-size: 1rem;
   transition: color var(--transition);
 }
 
-.nav-links a:hover, #themeToggle:hover {
+.nav-links a:hover,
+#themeToggle:hover {
   color: var(--primary);
 }
 
+/* Hero */
 .hero {
   background: #f1f5ff;
-  color: var(--text-color);
   text-align: center;
   padding: 4rem 1rem;
   border-bottom: 1px solid #e5e7eb;
   opacity: 0;
   animation: fadeInUp 1s ease forwards;
+  transition: margin-top 0.3s ease-in-out;
 }
 
+/* Shift hero down if nav is open */
+body.nav-open .hero {
+  margin-top: 300px;
+}
+
+/* Sections */
 .section {
   padding: 3rem 1rem;
   border-bottom: 1px solid #e5e7eb;
@@ -87,17 +114,9 @@ body {
   animation: fadeInUp 0.8s ease forwards;
 }
 
-.section:nth-of-type(2) {
-  animation-delay: 0.3s;
-}
-
-.section:nth-of-type(3) {
-  animation-delay: 0.6s;
-}
-
-.section:nth-of-type(4) {
-  animation-delay: 0.9s;
-}
+.section:nth-of-type(2) { animation-delay: 0.3s; }
+.section:nth-of-type(3) { animation-delay: 0.6s; }
+.section:nth-of-type(4) { animation-delay: 0.9s; }
 
 .section h2 {
   font-size: 1.8rem;
@@ -105,20 +124,22 @@ body {
   margin-bottom: 1rem;
 }
 
-.section p, .section ul {
+.section p,
+.section ul {
   font-size: 1rem;
   line-height: 1.6;
 }
 
 .section blockquote {
-  margin-top: 2rem;
-  padding: 1.2rem;
-  background-color: #f0f4ff;
+  background: #f0f4ff;
+  padding: 1rem;
   border-left: 4px solid var(--primary);
   font-style: italic;
   color: #334155;
+  margin-top: 2rem;
 }
 
+/* Cards */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -127,13 +148,13 @@ body {
 }
 
 .card {
-  background-color: var(--card-bg);
+  background: var(--card-bg);
   border: 1px solid #e2e8f0;
   border-radius: 8px;
   padding: 1.5rem;
   text-decoration: none;
   color: var(--text-color);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
   transition: transform var(--transition), box-shadow var(--transition);
   opacity: 0;
   transform: translateY(20px);
@@ -142,68 +163,140 @@ body {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   border-color: var(--primary);
 }
 
+/* Footer */
 footer {
   background-color: var(--footer-bg);
-  color: #4b5563;
   text-align: center;
   padding: 2rem 0;
   font-size: 0.9rem;
+  color: #4b5563;
   opacity: 0;
   animation: fadeIn 1s ease forwards;
   animation-delay: 1s;
 }
 
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Dark Mode */
 body.dark {
-  background-color: var(--dark-bg);
+  background: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+body.dark .nav-toggle {
   color: var(--dark-text);
 }
 
 body.dark .card {
-  background-color: #1e1e1e;
-  color: var(--dark-text);
-  border-color: #2e2e2e;
+  background-color: #1f2937;
+  color: #f3f4f6;
+  border-color: #374151;
 }
 
-body.dark .navbar, body.dark footer {
-  background-color: #181818;
-  color: var(--dark-text);
+body.dark .card h3,
+body.dark .card p {
+  color: #f3f4f6;
+}
+
+body.dark .navbar,
+body.dark footer {
+  background: #181818;
 }
 
 body.dark .hero {
   background: #1a1a1a;
-  color: var(--dark-text);
 }
 
 body.dark .section h2 {
   color: #60a5fa;
 }
 
-body.dark .nav-links a, body.dark #themeToggle {
+body.dark .nav-links a,
+body.dark #themeToggle {
   color: var(--dark-text);
 }
 
-body.dark .nav-links a:hover, body.dark #themeToggle:hover {
+body.dark .nav-links a:hover,
+body.dark #themeToggle:hover {
   color: #93c5fd;
 }
 
 body.dark .section blockquote {
   background-color: #1e293b;
-  color: #cbd5e1;
   border-left-color: #3b82f6;
+  color: #cbd5e1;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
+/* Responsive Mobile */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
 
-@keyframes fadeInUp {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--nav-bg);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    display: none;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.open {
+    display: flex !important;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .section h2 {
+    font-size: 1.4rem;
+  }
+
+  .section p,
+  .section ul {
+    font-size: 0.95rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
+
+  body.dark .nav-links {
+    background-color: #181818;
+  }
 }
