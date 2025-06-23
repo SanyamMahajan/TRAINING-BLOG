@@ -11,9 +11,12 @@
 <body>
   <header class="navbar">
     <div class="container">
-      <h1 class="logo">Sanyam Mahajan</h1>
+      <div class="nav-header">
+        <h1 class="logo">Sanyam Mahajan</h1>
+        
+      </div>
       <nav>
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
           <li><a href="index.html">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
@@ -25,14 +28,14 @@
     </div>
   </header>
 
-  <section class="hero">
+  <section class="hero fade-in">
     <div class="container">
       <h2>Welcome to My Training Blog</h2>
       <p>Documenting my journey at <strong>Ryaz IO</strong> under the mentorship of <strong>Mr. Sangam Arora</strong>.</p>
     </div>
   </section>
 
-  <section class="section" id="about">
+  <section class="section fade-in" id="about">
     <div class="container">
       <h2>About Me</h2>
       <p>Hello! I'm <strong>Sanyam Mahajan</strong> from Dinanagar, Punjab. I’m currently pursuing B.Tech in Computer Science and Engineering at <strong>Guru Nanak Dev Engineering College, Ludhiana</strong> (Batch 2027), and I’m deeply passionate about building impactful, full-stack software solutions.</p>
@@ -47,7 +50,7 @@
     </div>
   </section>
 
-  <section class="section" id="skills">
+  <section class="section fade-in" id="skills">
     <div class="container">
       <h2>Skills & Interests</h2>
       <ul>
@@ -59,7 +62,7 @@
     </div>
   </section>
 
-  <section class="section" id="perspective">
+  <section class="section fade-in" id="perspective">
     <div class="container">
       <h2>My Perspective</h2>
       <p>I believe in learning by building. For me, growth comes through experience, feedback, and constant iteration. Whether it's a full-stack web project or leading a college initiative, I enjoy bringing structure to ideas and executing them with clarity and passion.</p>
@@ -70,30 +73,47 @@
     </div>
   </section>
 
-  <section class="section" id="blogs">
+  <section class="section fade-in" id="blogs">
     <div class="container">
       <h2>Daily Blogs</h2>
       <div class="card-grid">
         <a class="card" href="day1.html">
           <h3>Day 1</h3>
           <p>Git CLI + Blog Setup</p>
-
         </a>
         <a class="card" href="day2.html">
           <h3>Day 2</h3>
           <p>Frontend Setup</p>
         </a>
-        <!-- Add more blog links here -->
       </div>
     </div>
   </section>
 
-  <footer>
+  <footer class="fade-in">
     <div class="container">
       <p>&copy; 2025 Sanyam Mahajan | Built with 💻 during training at Ryaz IO</p>
     </div>
   </footer>
 
   <script src="assets/script.js"></script>
+  <script>
+    // Toggle mobile navbar
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // Fade-in animations
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    faders.forEach(fader => observer.observe(fader));
+  </script>
 </body>
 </html>
