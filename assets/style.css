@@ -12,6 +12,7 @@
   --transition: 0.3s ease-in-out;
 }
 
+/* Base styles */
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -26,6 +27,44 @@ body {
   width: 90%;
   max-width: 1100px;
   margin: 0 auto;
+}
+
+/* Scroll progress bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background-color: var(--primary);
+  width: 0%;
+  z-index: 2000;
+  transition: width 0.25s ease-out;
+}
+
+/* Back to top button */
+#backToTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 0.5rem 0.7rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#backToTopBtn:hover {
+  background-color: var(--accent);
+}
+
+body.dark #backToTopBtn {
+  background-color: #3b82f6;
+  color: white;
 }
 
 /* Navbar */
@@ -50,6 +89,7 @@ body {
   margin: 0;
   opacity: 0;
   animation: fadeIn 1s ease forwards;
+  text-decoration: none;
 }
 
 .nav-toggle {
@@ -100,7 +140,6 @@ body {
   transition: margin-top 0.3s ease-in-out;
 }
 
-/* Shift hero down if nav is open */
 body.nav-open .hero {
   margin-top: 300px;
 }
@@ -251,7 +290,7 @@ body.dark .section blockquote {
   color: #cbd5e1;
 }
 
-/* Responsive Mobile */
+/* Mobile Responsive */
 @media (max-width: 768px) {
   .nav-toggle {
     display: block;

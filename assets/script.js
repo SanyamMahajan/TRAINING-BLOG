@@ -50,3 +50,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   faders.forEach((fader) => observer.observe(fader));
 });
+
+// Scroll progress bar update
+    window.onscroll = () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById("progressBar").style.width = scrolled + "%";
+
+      // Back to top button toggle
+      const backToTopBtn = document.getElementById("backToTopBtn");
+      if (winScroll > 300) {
+        backToTopBtn.style.display = "block";
+      } else {
+        backToTopBtn.style.display = "none";
+      }
+    };
+
+    document.getElementById("backToTopBtn").addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
